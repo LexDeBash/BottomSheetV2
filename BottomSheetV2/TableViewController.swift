@@ -29,6 +29,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Bottom Sheet"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         configureSearchController()
     }

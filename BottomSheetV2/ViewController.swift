@@ -11,15 +11,17 @@ class ViewController: UIViewController {
     
     @IBAction func showTablePressed() {
         let tableVC = TableViewController()
-        if let sheet = tableVC.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.prefersGrabberVisible = true
-            sheet.prefersEdgeAttachedInCompactHeight = true
-            sheet.preferredCornerRadius = 20
-            sheet.largestUndimmedDetentIdentifier = .medium
-        }
-        present(tableVC, animated: true)
+        let navigationVC = UINavigationController(rootViewController: tableVC)
+        
+        guard let sheetView = navigationVC.sheetPresentationController else { return }
+        sheetView.detents = [.medium(), .large()]
+        sheetView.prefersScrollingExpandsWhenScrolledToEdge = false
+        sheetView.prefersGrabberVisible = true
+        sheetView.prefersEdgeAttachedInCompactHeight = true
+        sheetView.preferredCornerRadius = 20
+        sheetView.largestUndimmedDetentIdentifier = .medium
+        
+        present(navigationVC, animated: true)
     }
 }
 
